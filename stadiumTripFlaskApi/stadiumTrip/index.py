@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, request
+from stadiumTrip.model.Visit import Visit
+
 
 app = Flask(__name__)
 
