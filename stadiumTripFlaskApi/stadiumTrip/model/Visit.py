@@ -1,6 +1,6 @@
 import datetime as dt
 
-from Stadium import Stadium
+from  .Stadium import Stadium
 
 class Visit(object):
     def __init__(self, visitStadium: str, visitDate = dt.datetime, visitPeople = list): 
