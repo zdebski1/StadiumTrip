@@ -2,14 +2,18 @@ from flask import Flask, jsonify, request
 from flasgger import Swagger
 
 from model.Visit import Visit
-
+from config.Common import Utils
 
 app = Flask(__name__)
 swagger = Swagger(app)
 
-# Initialize an empty list to store visits
-visits = ['{"StadiumName" : "Fenway Park"}']
+
+
+UtilsInstance = Utils()
+
+visitsCSV: str = 'C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/visits.csv'
+returnVisits = UtilsInstance.returnCsvToList(visitsCSV)
 
 @app.route("/visits")
-def hello_world():
-    return jsonify(visits)
+def returnStadiumsVisited():
+    return jsonify(returnVisits)
