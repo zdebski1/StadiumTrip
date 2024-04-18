@@ -13,19 +13,31 @@ swagger = Swagger(app)
 UtilsInstance = Utils()
 
 visitsCSV: str = 'C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/visits.csv'
-returnVisits = UtilsInstance.returnCsvToList(visitsCSV)
 
-@app.route("/visits")
+@app.route("/visits", methods=['GET'])
 def returnStadiumsVisited():
-    return jsonify(returnVisits)
-
+    
+    """
+    This endpoint returns a list of stadiums visited.
+    ---
+    responses:
+      200:
+        description: A list of stadiums visited.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+    """
+    return jsonify(UtilsInstance.returnCsvToList(visitsCSV))
 
 
 
 
 @app.route("/visits", methods=['POST'])
 def addNewVisit():
-
+        
     requestData = request.json
 
 
