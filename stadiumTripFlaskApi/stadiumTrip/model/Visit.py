@@ -9,7 +9,7 @@ class Visit(object):
     def __init__(self, visitStadium: str, visitDate = dt.datetime, visitPeople = list): 
         stadiums = Stadium.returnStadiumName()
         if visitStadium not in stadiums:
-            raise ValueError(f"Invalid stadium, Please use a stadium in this list: {stadiums}")
+            raise ValueError(f"{self.visitStadium} is an invalid stadium, Please use a stadium in this list: {stadiums}")
         
         self.visitStadium = visitStadium
         self.visitDate = visitDate
