@@ -1,6 +1,9 @@
 import datetime as dt
+import json
 
-from  .Stadium import Stadium
+from .Stadium import Stadium
+from config.Common import Utils
+
 
 class Visit(object):
     def __init__(self, visitStadium: str, visitDate = dt.datetime, visitPeople = list): 
@@ -12,8 +15,15 @@ class Visit(object):
         self.visitDate = visitDate
         self.visitPeople = visitPeople
 
+       
+    def saveVisit (self):
 
-    def __repr__(self) -> str:
-         people_str = ', '.join(self.visitPeople).strip("[]'")
-         
-         return 'Visited: {self.visitStadium} on {self.visitDate} with {people_str}'.format(self=self,people_str=people_str)
+        utilsInstance = Utils()
+
+        filename: str = 'C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/visits.csv'
+        header: list = ['visitStadium', 'visitDate', 'visitPeople']
+        dataColumns: list = [self.visitStadium, self.visitDate, self.visitPeople]
+
+        utilsInstance.saveDataToCSV(filename,header,dataColumns)
+
+        print(f'Saved Visit {self.visitStadium} on {self.visitDate} with {self.visitPeople}')

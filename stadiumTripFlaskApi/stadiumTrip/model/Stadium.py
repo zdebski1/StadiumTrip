@@ -16,3 +16,18 @@ class Stadium(object):
         f.close()
         
         return stadiumName
+    
+
+    @staticmethod 
+    def returnAllStadiumData():
+        f = open('C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/Stadium.json')
+        data = json.load(f)
+
+        stadiumInfo = []
+
+        for i in data['Stadiums']:
+            stadiumInfo.append(i)
+
+        f.close()
+            
+        return stadiumInfo
