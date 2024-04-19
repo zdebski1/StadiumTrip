@@ -1,1 +1,4 @@
 stadiumTripFlaskApi/stadiumTrip/scratch.py
+stadiumTripFlaskApi/stadiumTrip/config/Secrets.py
+stadiumTripFlaskApi/stadiumTrip/data/tables.sql
+stadiumTripFlaskApi/stadiumTrip/data/tableValues.sql
