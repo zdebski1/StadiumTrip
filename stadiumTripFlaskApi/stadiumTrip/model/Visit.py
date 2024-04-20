@@ -20,10 +20,9 @@ class Visit(object):
 
         utilsInstance = Utils()
 
-        filename: str = 'C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/visits.csv'
-        header: list = ['visitStadium', 'visitDate', 'visitPeople']
-        dataColumns: list = [self.visitStadium, self.visitDate, self.visitPeople]
-
-        utilsInstance.saveDataToCSV(filename,header,dataColumns)
+        columnName: list = ["visitStadium", "visitDate", "visitPeople"]
+        data: list = [self.visitStadium, self.visitDate, self.visitPeople]
+      
+        utilsInstance.saveDataToSql(columnName,'dbo','visits',data)
 
         print(f'Saved Visit {self.visitStadium} on {self.visitDate} with {self.visitPeople}')
