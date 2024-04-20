@@ -1,21 +1,20 @@
 import json
 
+from config.Common import Utils
 
 class Stadium(object):
 
     @staticmethod 
     def returnStadiumName():
-        f = open('C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/Stadium.json')
-        data = json.load(f)
-
-        stadiumName = []
-
-        for i in data['Stadiums']:
-            stadiumName.append(i['stadiumName'])
-
-        f.close()
         
-        return stadiumName
+        UtilsInstance = Utils()
+
+        stadiumName = UtilsInstance.returnSqlData('dbo','vw_ListOfStadiums')
+
+        stadiumList = [row[0] for row in stadiumName]
+
+
+        return stadiumList
     
 
     @staticmethod 
