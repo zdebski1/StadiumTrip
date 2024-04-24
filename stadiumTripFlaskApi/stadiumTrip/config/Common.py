@@ -10,7 +10,7 @@ class Utils (object):
             conn = self.db.getConnection()
 
             if (conn):
-                print("Successfully recived connection from connection pool")
+                print("Successfully received connection from connection pool")
                 cursor = conn.cursor()
 
                 query = f'''SELECT * FROM {schema}.{tableName}'''
@@ -33,7 +33,7 @@ class Utils (object):
             conn = self.db.getConnection()
 
             if (conn):
-                print("Successfully recived connection from connection pool")
+                print("Successfully received connection from connection pool")
                 cursor = conn.cursor()
 
                 placeholders = ','.join(['%s'] * len(intoColumns))
