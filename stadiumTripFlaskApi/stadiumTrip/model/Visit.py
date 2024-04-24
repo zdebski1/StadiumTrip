@@ -20,8 +20,9 @@ class Visit(object):
 
         utilsInstance = Utils()
 
-        columnName: list = ["visitStadium", "visitDate", "visitPeople"]
-        data: list = [self.visitStadium, self.visitDate, self.visitPeople]
+        isDeleted: int  = 0
+        columnName: list = ["visitStadium", "visitDate", "visitPeople","isDeleted"]
+        data: list = [self.visitStadium, self.visitDate, self.visitPeople,isDeleted]
       
         utilsInstance.saveDataToSql(columnName,'dbo','visits',data)
 
