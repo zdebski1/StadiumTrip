@@ -45,13 +45,9 @@ class Utils (object):
             
             conn.autocommit = True
             cursor = conn.cursor()
-
-
             placeholders = ','.join(['%s'] * len(intoColumns))
             query = f'INSERT INTO {intoSchema}.{intoTableName} ({", ".join(intoColumns)}) VALUES ({placeholders});'
-
-            cursor.execute(query, fromValues)
-            
+            cursor.execute(query, fromValues)  
             conn.close()
         
         except Exception as e:
