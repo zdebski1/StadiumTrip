@@ -12,11 +12,9 @@ swagger = Swagger(app)
 
 UtilsInstance = Utils()
 
-visitsCSV: str = 'C:/Projects/Repos/StadiumTrip/stadiumTripFlaskApi/stadiumTrip/data/visits.csv'
 
 @app.route("/visits", methods=['GET'])
-def returnStadiumsVisited():
-    
+def returnStadiumsVisited(): 
     """
     This endpoint returns a list of stadiums visited.
     ---
@@ -30,7 +28,12 @@ def returnStadiumsVisited():
               items:
                 type: object
     """
-    return jsonify(UtilsInstance.returnCsvToList(visitsCSV))
+
+    try:
+        stadiumVisited = UtilsInstance.returnVisits()
+        return jsonify(stadiumVisited)
+    except Exception as e:
+        print(e)
 
 
 
@@ -69,22 +72,22 @@ def addNewVisit():
                   type: string
                   description: Success message.
     """
-    # try:
-    requestData = request.form
-    
-    visitStadium = requestData.get('visitStadium')
-    visitDate = requestData.get('visitDate')
-    visitPeople = requestData.get('visitPeople')
+    try:
+        requestData = request.form
+        
+        visitStadium = requestData.get('visitStadium')
+        visitDate = requestData.get('visitDate')
+        visitPeople = requestData.get('visitPeople')
 
-    visitDate_date = dt.datetime.strptime(visitDate, '%Y-%m-%d').date()
+        visitDate_date = dt.datetime.strptime(visitDate, '%Y-%m-%d').date()
 
-    vistInstance = Visit(visitStadium, visitDate_date, visitPeople)
+        vistInstance = Visit(visitStadium, visitDate_date, visitPeople)
 
-    vistInstance.saveVisit()
+        vistInstance.saveVisit()
 
-    return jsonify({'message': 'Visit added successfully'})
-    # except Exception as e:
-    #     print(e)
+        return jsonify({'message': 'Visit added successfully'})
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":
