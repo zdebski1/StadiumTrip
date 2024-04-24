@@ -56,3 +56,10 @@ class Utils (object):
         
         except Exception as e:
             print(e)
+
+     def returnVisits(self):
+
+        utilsInstance = Utils()
+
+        previousVisits = utilsInstance.returnSqlData("dbo","vw_stadiumsVisited") 
+        return previousVisits           

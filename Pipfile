@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 psycopg2 = "*"
+requests = "*"
+flask-restful-swagger-3 = "*"
 
 [dev-packages]
 
