@@ -27,7 +27,7 @@ class Visit(object):
     def saveVisit (self):
 
         columnName: list = self.saveToSqlStruct
-        data = self.createVisitToSave()
+        data = self._createVisitToSave()
         flattened_data = list(itertools.chain.from_iterable(data))
       
         self.utilsInstance.saveDataToSql(columnName,'dbo','visits',flattened_data)
@@ -43,7 +43,7 @@ class Visit(object):
         filtered_stadium = stadium[stadium['stadiumname'] == self.visitStadium]
         return filtered_stadium
 
-    def createVisitToSave(self):
+    def _createVisitToSave(self):
         
         input = [self.visitStadium, self.visitDate, self.visitPeople, self.isDeleted]
 
