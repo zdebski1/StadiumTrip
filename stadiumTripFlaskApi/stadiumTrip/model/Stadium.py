@@ -1,5 +1,4 @@
-import json
-
+import pandas as pd
 from config.Common import Utils
 
 class Stadium(object):
@@ -9,9 +8,8 @@ class Stadium(object):
         
         UtilsInstance = Utils()
 
-        stadiumName = UtilsInstance.returnSqlData('dbo','vw_ListOfStadiums')
+        stadiumName = UtilsInstance.returnSqlDataToPandasDf('dbo','vw_ListOfStadiums')
 
-        stadiumList = [row[0] for row in stadiumName]
-
+        stadiumList = stadiumName['stadiumname'].tolist()
 
         return stadiumList

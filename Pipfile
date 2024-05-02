@@ -8,6 +8,7 @@ flask = "*"
 psycopg2 = "*"
 requests = "*"
 flask-restful-swagger-3 = "*"
+pandas = "*"
 
 [dev-packages]
 
